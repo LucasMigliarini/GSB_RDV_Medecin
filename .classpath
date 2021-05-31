@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="lib" path="/home/student/eclipse-workspace/BTS-Hibernate-Starter/LibsForHibernate/antlr-2.7.7.jar"/>
+	<classpathentry kind="lib" path="/home/student/eclipse-workspace/BTS-Hibernate-Starter/LibsForHibernate/apache-log4j-extras-1.2.17.jar"/>
+	<classpathentry kind="lib" path="/home/student/eclipse-workspace/BTS-Hibernate-Starter/LibsForHibernate/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="/home/student/eclipse-workspace/BTS-Hibernate-Starter/LibsForHibernate/hibernate-commons-annotations-4.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="/home/student/eclipse-workspace/BTS-Hibernate-Starter/LibsForHibernate/hibernate-core-4.1.8.Final.jar"/>
+	<classpathentry kind="lib" path="/home/student/eclipse-workspace/BTS-Hibernate-Starter/LibsForHibernate/hibernate-entitymanager-4.1.8.Final.jar"/>
+	<classpathentry kind="lib" path="/home/student/eclipse-workspace/BTS-Hibernate-Starter/LibsForHibernate/hibernate-jpa-2.0-api-1.0.1.Final.jar"/>
+	<classpathentry kind="lib" path="/home/student/eclipse-workspace/BTS-Hibernate-Starter/LibsForHibernate/javassist-3.15.0-GA.jar"/>
+	<classpathentry kind="lib" path="/home/student/eclipse-workspace/BTS-Hibernate-Starter/LibsForHibernate/jboss-logging-3.1.0.GA.jar"/>
+	<classpathentry kind="lib" path="/home/student/eclipse-workspace/BTS-Hibernate-Starter/LibsForHibernate/jboss-transaction-api_1.1_spec-1.0.0.Final.jar"/>
+	<classpathentry kind="lib" path="/home/student/eclipse-workspace/BTS-Hibernate-Starter/LibsForHibernate/log4j-1.2.17.jar"/>
+	<classpathentry kind="lib" path="/home/student/eclipse-workspace/BTS-Hibernate-Starter/LibsForHibernate/mariadb-java-client-2.4.4.jar"/>
+	<classpathentry kind="lib" path="/home/student/eclipse-workspace/BTS-Hibernate-Starter/LibsForHibernate/mysql-connector-java-8.0.13.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
