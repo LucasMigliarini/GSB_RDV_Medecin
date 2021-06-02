@@ -39,19 +39,31 @@ public class DAOCreneaux extends DAOGeneric<Creneaux>{
 		return cre;
 	}
 	
-public Creneaux FindByAll(String date, String heure, Medecin medecin) {
-	
-		int idMed = medecin.getMedecinId();
-			
-		String SQL= "SELECT * FROM CRENEAUX WHERE CreDate=:date AND CreHeure=:heure AND CreMedecin=:idMed";
+	public Creneaux FindByAll(String date, String heure, Medecin medecin) {
+		
+			int idMed = medecin.getMedecinId();
+				
+			String SQL= "SELECT * FROM CRENEAUX WHERE CreDate=:date AND CreHeure=:heure AND CreMedecin=:idMed";
+			SQLQuery query2 = session.createSQLQuery(SQL);
+			query2.setString("date",date);
+			query2.setString("heure",heure);
+			query2.setInteger("idMed",idMed);
+			query2.addEntity(entityClass);
+			Creneaux cre = (Creneaux) query2.uniqueResult();
+			return cre;
+		}
+	public List<Creneaux> FindReserver(Visiteur visiteur) {
+		
+		int idVisi = visiteur.getVisiteurId();
+		
+		String SQL= "SELECT * FROM CRENEAUX WHERE CreReserver=1 and CreVisiteur=:idVisi";
 		SQLQuery query2 = session.createSQLQuery(SQL);
-		query2.setString("date",date);
-		query2.setString("heure",heure);
-		query2.setInteger("idMed",idMed);
+		query2.setInteger("idVisi",idVisi);
 		query2.addEntity(entityClass);
-		Creneaux cre = (Creneaux) query2.uniqueResult();
+		List<Creneaux> cre = query2.list();
 		return cre;
 	}
+
 	
 
 	

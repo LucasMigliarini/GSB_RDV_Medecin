@@ -22,6 +22,15 @@ public class DAOProduit extends DAOGeneric<Produit>{
 		// TODO Auto-generated constructor stub
 	}
 
+	public List<Produit> findByCat (int i) {	
+		String SQL = "SELECT * FROM PRODUIT WHERE ProduitCategorie =:cat";
+		SQLQuery query = session.createSQLQuery(SQL);
+		query.setInteger("cat",i);
+		query.addEntity(entityClass);
+		List<Produit> produit = (List<Produit>) query.list();
+		return produit;
+	}
+	
 
 	
 	

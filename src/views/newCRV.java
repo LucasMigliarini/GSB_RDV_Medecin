@@ -27,6 +27,8 @@ public class newCRV extends JFrame {
 	private JButton btnValider;
 	private JComboBox comboBox_cat;
 	private JTable table;
+	private JButton btnAjouter;
+	private JComboBox comboBox_prod;
 
 	/**
 	 * Launch the application.
@@ -104,16 +106,17 @@ public class newCRV extends JFrame {
 		txt_desc.setBounds(146, 143, 114, 19);
 		contentPane.add(txt_desc);
 		
-		JLabel lblDatemedicament = new JLabel("Medicament");
-		lblDatemedicament.setBounds(399, 103, 114, 15);
+		JLabel lblDatemedicament = new JLabel("Produit(s) sélectionné(s)");
+		lblDatemedicament.setBounds(415, 103, 175, 15);
 		contentPane.add(lblDatemedicament);
 		
-		JLabel lblCategorie = new JLabel("Categorie");
-		lblCategorie.setBounds(399, 36, 114, 15);
+		JLabel lblCategorie = new JLabel("Categories:");
+		lblCategorie.setBounds(338, 23, 114, 15);
 		contentPane.add(lblCategorie);
 		
 		comboBox_cat = new JComboBox();
-		comboBox_cat.setBounds(396, 53, 149, 24);
+		comboBox_cat.setName("selectionner");
+		comboBox_cat.setBounds(320, 53, 149, 24);
 		contentPane.add(comboBox_cat);
 		
 		JScrollPane scrollPane = new JScrollPane();
@@ -125,7 +128,7 @@ public class newCRV extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"New column", "New column"
+				"New column"
 			}
 		));
 		scrollPane.setViewportView(table);
@@ -137,6 +140,19 @@ public class newCRV extends JFrame {
 		JComboBox comboBox_cat_2 = new JComboBox();
 		comboBox_cat_2.setBounds(146, 227, 114, 24);
 		contentPane.add(comboBox_cat_2);
+		
+		btnAjouter = new JButton("Ajouter");
+		btnAjouter.setName("ajouter");
+		btnAjouter.setBounds(636, 53, 117, 25);
+		contentPane.add(btnAjouter);
+		
+		comboBox_prod = new JComboBox();
+		comboBox_prod.setBounds(475, 53, 149, 24);
+		contentPane.add(comboBox_prod);
+		
+		JLabel lblProduits = new JLabel("Produit(s):");
+		lblProduits.setBounds(498, 23, 114, 15);
+		contentPane.add(lblProduits);
 	}
 	public JButton getBtnRetour() {
 		return btnRetour;
@@ -159,5 +175,11 @@ public class newCRV extends JFrame {
 
 	public JTable getTable() {
 		return table;
+	}
+	public JButton getBtnAjouter() {
+		return btnAjouter;
+	}
+	public JComboBox getComboBox_prod() {
+		return comboBox_prod;
 	}
 }

@@ -25,6 +25,7 @@ import DAO.DAOProduit;
 import DAO.DAOVisiteur;
 import views.NewRDV;
 import views.ViewRDV;
+import views.allRDV;
 import views.compteRenduVisite;
 import views.newCRV;
 import model.Categorie;
@@ -39,26 +40,24 @@ import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 
-public class ControllerRDV implements ActionListener{
+public class ControllerAllRDV2 implements ActionListener{
 	
-	private ViewRDV fenetre;
+	private allRDV fenetre;
 	
 	DAOCreneaux daoCre;
-	DAOMedecin daoMed;
 	DAOVisiteur daoVisi;
 	List<Creneaux> listCre;
-	MyDefaultModelCreneaux model;
+	MyDefaultModelAllRDV model;
 	
 	
 	
-	public ControllerRDV(ViewRDV fenetre, DAOCreneaux daoCre, DAOMedecin daoMed,DAOVisiteur daoVisi) {
+	public ControllerAllRDV2(allRDV fenetre, DAOCreneaux daoCre, DAOVisiteur daoVisi) {
 		
 		this.fenetre = fenetre;
 		this.daoCre = daoCre;
-		this.daoMed = daoMed;
 		this.daoVisi = daoVisi;
 		fenetre.getBtnRetour().addActionListener(this);
-		fenetre.getBtnValider().addActionListener(this);
+		fenetre.getBtnVoir().addActionListener(this);
 					
 	}
 
@@ -67,37 +66,19 @@ public class ControllerRDV implements ActionListener{
 		for (Visiteur visiteur : visi) {
 			fenetre.getComboBox_visi().addItem(visiteur.getVisiteurNom());
 		}
-		
-		List<Creneaux> cre = daoCre.FindAllReserver();
-		model = new MyDefaultModelCreneaux(cre);
-		fenetre.getTable().setModel(model);
 			
 		fenetre.setVisible(true);
 
 	}
 	
-	
-	
-	private void valider () throws HibernateException, SQLException {
-        
-		int id_row = fenetre.getTable().getSelectedRow();
-		
-		String info1 = (String) fenetre.getTable().getValueAt(id_row,0);
-		String info2 = (String) fenetre.getTable().getValueAt(id_row,1);
-		String info3 = (String) fenetre.getTable().getValueAt(id_row,2);
-		
-		Visiteur visi = daoVisi.findByName(fenetre.getComboBox_visi().getSelectedItem().toString());
-		
-		Medecin medNom = daoMed.findByName(info3);
-		System.out.println(medNom.getMedecinAdresse());
-		Creneaux cre = daoCre.FindByAll(info1, info2, medNom);
-		cre.setCreReserver(1);
-		cre.setVisiteur(visi);
-		daoCre.SaveOrUpdate(cre);
-		fenetre.setVisible(false);
-		new ControllerCRV(new compteRenduVisite(), new DAOCompteRendu(HibernateUtil.getSessionFactory().openSession())).Init();
-		
+	private void voir() {
+
+		Visiteur visiteur = daoVisi.findByName(fenetre.getComboBox_visi().getSelectedItem().toString());
+		List<Creneaux> cre = daoCre.FindReserver(visiteur);
+		model = new MyDefaultModelAllRDV(cre);
+		fenetre.getTable().setModel(model);
 	}
+	
 	
 	private void retour() throws HibernateException, SQLException {
 		fenetre.setVisible(false);
@@ -110,17 +91,6 @@ public class ControllerRDV implements ActionListener{
 		JButton buton = (JButton) e.getSource();
 		String name = buton.getName();
 		switch (name) {
-		case "valider":
-			try {
-				valider();
-			} catch (HibernateException e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
-			} catch (SQLException e2) {
-				// TODO Auto-generated catch block
-				e2.printStackTrace();
-			}
-			break;
 		case "retour":
 			try {
 				retour();
@@ -128,6 +98,9 @@ public class ControllerRDV implements ActionListener{
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+			break;
+		case "voir":
+			voir();
 			break;
 		default:
 			break;

@@ -16,6 +16,7 @@ import util.HibernateUtil;
 import util.TestConnection;
 import views.NewRDV;
 import views.ViewRDV;
+import views.allRDV;
 import views.compteRenduVisite;
 import views.connexion;
 import views.newCRV;
@@ -39,11 +40,13 @@ public class App {
 		
 		//new ControllerCRV(new compteRenduVisite(), new DAOCompteRendu(HibernateUtil.getSessionFactory().openSession())).Init();
 		
-		//new ControllerNewCRV(new newCRV(), new DAOProduit(HibernateUtil.getSessionFactory().openSession()), new DAOCategorie(HibernateUtil.getSessionFactory().openSession())).Init();
+		new ControllerNewCRV(new newCRV(), new DAOProduit(HibernateUtil.getSessionFactory().openSession()), new DAOCategorie(HibernateUtil.getSessionFactory().openSession())).Init();
 
-		new ControllerNewRDV(new NewRDV(), new DAOCreneaux(HibernateUtil.getSessionFactory().openSession()), new DAOMedecin(HibernateUtil.getSessionFactory().openSession())).Init();
+		//new ControllerNewRDV(new NewRDV(), new DAOCreneaux(HibernateUtil.getSessionFactory().openSession()), new DAOMedecin(HibernateUtil.getSessionFactory().openSession())).Init();
 		
-		//new ControllerRDV(new ViewRDV(), new DAOCreneaux(HibernateUtil.getSessionFactory().openSession()), new DAOMedecin(HibernateUtil.getSessionFactory().openSession())).Init();
+		//new ControllerRDV(new ViewRDV(), new DAOCreneaux(HibernateUtil.getSessionFactory().openSession()), new DAOMedecin(HibernateUtil.getSessionFactory().openSession()), new DAOVisiteur(HibernateUtil.getSessionFactory().openSession())).Init();
+		
+		//new ControllerAllRDV2(new allRDV(), new DAOCreneaux(HibernateUtil.getSessionFactory().openSession()), new DAOVisiteur(HibernateUtil.getSessionFactory().openSession())).Init();
 		
 	}
 

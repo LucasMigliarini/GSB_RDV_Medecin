@@ -12,6 +12,7 @@ import org.hibernate.criterion.Restrictions;
 import org.hibernate.Criteria;
 import org.hibernate.Query;
 
+import model.Medecin;
 import model.Visiteur;
 
 public class DAOVisiteur extends DAOGeneric<Visiteur>{
@@ -29,6 +30,15 @@ public class DAOVisiteur extends DAOGeneric<Visiteur>{
 		query.addEntity(entityClass);
 		Visiteur email = (Visiteur) query.uniqueResult();
 		return email;
+	}
+	
+	public Visiteur findByName (String name) {	
+		String SQL = "SELECT * FROM VISITEUR WHERE VisiteurNom=:name";
+		SQLQuery query = session.createSQLQuery(SQL);
+		query.setString("name",name);
+		query.addEntity(entityClass);
+		Visiteur visi = (Visiteur) query.uniqueResult();
+		return visi;
 	}
 	
 	

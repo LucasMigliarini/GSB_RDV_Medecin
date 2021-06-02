@@ -1,39 +1,33 @@
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 
-import javax.swing.JCheckBox;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.text.StyledEditorKit.BoldAction;
-
-import org.hibernate.annotations.Check;
 
 import model.CompteRenduVisite;
+import model.Creneaux;
 import model.Medecin;
 import model.Produit;
 import model.Visiteur;
 
-public class MyDefaultModelProduit extends DefaultTableModel{
-	List<Produit> CompteRV;
+public class MyDefaultModelAllRDV extends DefaultTableModel{
+	List<Creneaux> CompteRV;
 	String [] ColumNames = {
-			"Produit",
-			"Selectionner"
+			"Date",
+			"Heure",
+			"Medecin"
 	};
 	
-	HashSet<Produit> modified = new HashSet<>();
+	HashSet<Creneaux> modified = new HashSet<>();
 
-	public MyDefaultModelProduit(List<Produit> compteRV) {
+	public MyDefaultModelAllRDV(List<Creneaux> compteRV) {
 
 		CompteRV = compteRV;
-		
 	}
 
 	
-	HashSet<Produit > getModifiedCRV(){
+	HashSet<Creneaux > getModifiedCRV(){
 		return modified;
 	}
-	
-
 	@Override
 	public Class<?> getColumnClass(int columnIndex) {
 		Class<?> type =null;
@@ -42,6 +36,9 @@ public class MyDefaultModelProduit extends DefaultTableModel{
 			type = String.class;
 			break;
 		case 1:
+			type = String.class;
+			break;
+		case 2:
 			type = String.class;
 			break;
 		default:
@@ -53,7 +50,7 @@ public class MyDefaultModelProduit extends DefaultTableModel{
 	@Override
 	public int getColumnCount() {
 		// TODO Auto-generated method stub
-		return 2;
+		return 3;
 	}
 
 	@Override
@@ -70,14 +67,18 @@ public class MyDefaultModelProduit extends DefaultTableModel{
 	@Override
 	public Object getValueAt(int row, int column) {
 		Object value=null;	
-		Produit crv = CompteRV.get(row);
+		Creneaux crv = CompteRV.get(row);
 		switch (column) {
 		case 0:
-			
-			value=crv.getProduitNom();
+			value=crv.getCreDate();
 			break;
 		case 1:
-			value=crv.getProduitId();
+			value=crv.getCreHeure();
+			break;
+		case 2:
+			Medecin med =crv.getMedecin();		
+			String nameMed = med.getMedecinNom();
+			value = nameMed;
 			break;
 		default:
 		}
@@ -88,8 +89,11 @@ public class MyDefaultModelProduit extends DefaultTableModel{
 	@Override
 	public boolean isCellEditable(int row, int column) {
 
-		
-		return true;
+		return false;
 		
 	}
+
+
+	
+
 }

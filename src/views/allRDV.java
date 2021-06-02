@@ -6,25 +6,20 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-import java.awt.GridBagLayout;
-import javax.swing.JLabel;
-import java.awt.GridBagConstraints;
-import java.awt.Insets;
-import javax.swing.JList;
-import javax.swing.JTable;
-import javax.swing.JButton;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JScrollPane;
+import javax.swing.JLabel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JComboBox;
+import javax.swing.JButton;
 
-public class ViewRDV extends JFrame {
+public class allRDV extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
-	private JButton BtnRetour;
-	private JButton BtnValider;
-	private JLabel lblNomVisiteur;
 	private JComboBox comboBox_visi;
+	private JButton btnVoir;
+	private JButton btnRetour;
 
 	/**
 	 * Launch the application.
@@ -33,7 +28,7 @@ public class ViewRDV extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ViewRDV frame = new ViewRDV();
+					allRDV frame = new allRDV();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,30 +40,16 @@ public class ViewRDV extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public ViewRDV() {
+	public allRDV() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 678, 385);
+		setBounds(100, 100, 797, 497);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblCrnauxDisponible = new JLabel("Crénaux disponible");
-		lblCrnauxDisponible.setBounds(273, 0, 136, 15);
-		contentPane.add(lblCrnauxDisponible);
-		
-		BtnRetour = new JButton("Retour");
-		BtnRetour.setName("retour");
-		BtnRetour.setBounds(12, 314, 209, 25);
-		contentPane.add(BtnRetour);
-		
-		BtnValider = new JButton("Valider");
-		BtnValider.setName("valider");
-		BtnValider.setBounds(539, 314, 117, 25);
-		contentPane.add(BtnValider);
-		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(12, 44, 644, 187);
+		scrollPane.setBounds(26, 43, 725, 276);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -76,29 +57,39 @@ public class ViewRDV extends JFrame {
 			new Object[][] {
 			},
 			new String[] {
-				"New column", "New column", "New column"
+				"Date", "Heure", "Medecin"
 			}
 		));
 		scrollPane.setViewportView(table);
 		
-		lblNomVisiteur = new JLabel("Nom visiteur:");
-		lblNomVisiteur.setBounds(22, 253, 111, 15);
-		contentPane.add(lblNomVisiteur);
+		JLabel lblVoirRendezvous = new JLabel("Voir Rendez-vous");
+		lblVoirRendezvous.setBounds(292, 12, 175, 15);
+		contentPane.add(lblVoirRendezvous);
 		
 		comboBox_visi = new JComboBox();
-		comboBox_visi.setBounds(125, 248, 125, 24);
+		comboBox_visi.setBounds(26, 331, 114, 24);
 		contentPane.add(comboBox_visi);
-	}
-	public JButton getBtnRetour() {
-		return BtnRetour;
-	}
-	public JButton getBtnValider() {
-		return BtnValider;
+		
+		btnVoir = new JButton("Voir");
+		btnVoir.setName("voir");
+		btnVoir.setBounds(162, 331, 117, 25);
+		contentPane.add(btnVoir);
+		
+		btnRetour = new JButton("Retour");
+		btnRetour.setName("retour");
+		btnRetour.setBounds(26, 426, 117, 25);
+		contentPane.add(btnRetour);
 	}
 	public JTable getTable() {
 		return table;
 	}
 	public JComboBox getComboBox_visi() {
 		return comboBox_visi;
+	}
+	public JButton getBtnVoir() {
+		return btnVoir;
+	}
+	public JButton getBtnRetour() {
+		return btnRetour;
 	}
 }

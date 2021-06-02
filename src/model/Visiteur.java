@@ -18,7 +18,7 @@ public class Visiteur implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name="VisiteurId")
-	private String VisiteurId;
+	private int VisiteurId;
 
 	@Column(name="VisiteurMail")
 	private String visiteurMail;
@@ -37,6 +37,14 @@ public class Visiteur implements Serializable {
 
 
 	public Visiteur() {
+	}
+	
+	public int getVisiteurId() {
+		return this.VisiteurId;
+	}
+
+	public void setVisiteurId(int VisiteurId) {
+		this.VisiteurId = VisiteurId;
 	}
 
 	public String getVisiteurMail() {

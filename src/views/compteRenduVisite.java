@@ -18,8 +18,9 @@ public class compteRenduVisite extends JFrame {
 	private JTable table;
 	private JButton btn_update;
 	private JButton btn_delete;
-	private JButton btn_creerCRD;
+	private JButton btn_creerVoirRDV;
 	private JButton btn_creerCRD_1;
+	private JButton btn_creerCRD_2;
 
 	/**
 	 * Launch the application.
@@ -52,9 +53,10 @@ public class compteRenduVisite extends JFrame {
 		lblComptesRendusDe.setBounds(260, 12, 227, 15);
 		contentPane.add(lblComptesRendusDe);
 		
-		btn_creerCRD = new JButton("Voir mes rendez-vous");
-		btn_creerCRD.setBounds(12, 415, 209, 25);
-		contentPane.add(btn_creerCRD);
+		btn_creerVoirRDV = new JButton("Voir mes rendez-vous");
+		btn_creerVoirRDV.setName("voirRDV");
+		btn_creerVoirRDV.setBounds(12, 415, 209, 25);
+		contentPane.add(btn_creerVoirRDV);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(12, 52, 725, 276);
@@ -71,6 +73,7 @@ public class compteRenduVisite extends JFrame {
 		scrollPane.setViewportView(table);
 		
 		btn_creerCRD_1 = new JButton("Nouveau compte rendu");
+		btn_creerCRD_1.setName("newCRV");
 		btn_creerCRD_1.setBounds(479, 415, 269, 25);
 		contentPane.add(btn_creerCRD_1);
 		
@@ -84,7 +87,8 @@ public class compteRenduVisite extends JFrame {
 		btn_delete.setBounds(539, 357, 209, 25);
 		contentPane.add(btn_delete);
 		
-		JButton btn_creerCRD_2 = new JButton("Prendre un rendez-vous");
+		btn_creerCRD_2 = new JButton("Prendre un rendez-vous");
+		btn_creerCRD_2.setName("takerdv");
 		btn_creerCRD_2.setBounds(246, 415, 209, 25);
 		contentPane.add(btn_creerCRD_2);
 	}
@@ -94,13 +98,16 @@ public class compteRenduVisite extends JFrame {
 	public JButton getBtn_delete() {
 		return btn_delete;
 	}
-	public JButton getBtn_creerCRD() {
-		return btn_creerCRD;
+	public JButton getbtn_creerVoirRDV() {
+		return btn_creerVoirRDV;
 	}
 	public JButton getBtn_creerCRD_1() {
 		return btn_creerCRD_1;
 	}
 	public JTable getTable() {
 		return table;
+	}
+	public JButton getBtn_creerCRD_2() {
+		return btn_creerCRD_2;
 	}
 }

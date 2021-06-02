@@ -61,6 +61,7 @@ public class Controller implements ActionListener{
 				String bdd_mdp = bdd_visiteur.getVisiteurPassword();
 				
 				if(bdd_mdp.equals(mdp)) {
+					fenetre.setVisible(false);
 					new ControllerCRV(new compteRenduVisite(), new DAOCompteRendu(HibernateUtil.getSessionFactory().openSession())).Init();
 					
 				}else {
