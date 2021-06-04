@@ -29,6 +29,8 @@ public class newCRV extends JFrame {
 	private JTable table;
 	private JButton btnAjouter;
 	private JComboBox comboBox_prod;
+	private JComboBox comboBox_visi;
+	private JComboBox comboBox_med;
 
 	/**
 	 * Launch the application.
@@ -133,13 +135,13 @@ public class newCRV extends JFrame {
 		));
 		scrollPane.setViewportView(table);
 		
-		JComboBox comboBox_cat_1 = new JComboBox();
-		comboBox_cat_1.setBounds(146, 184, 114, 24);
-		contentPane.add(comboBox_cat_1);
+		comboBox_med = new JComboBox();
+		comboBox_med.setBounds(146, 184, 114, 24);
+		contentPane.add(comboBox_med);
 		
-		JComboBox comboBox_cat_2 = new JComboBox();
-		comboBox_cat_2.setBounds(146, 227, 114, 24);
-		contentPane.add(comboBox_cat_2);
+		comboBox_visi = new JComboBox();
+		comboBox_visi.setBounds(146, 227, 114, 24);
+		contentPane.add(comboBox_visi);
 		
 		btnAjouter = new JButton("Ajouter");
 		btnAjouter.setName("ajouter");
@@ -181,5 +183,11 @@ public class newCRV extends JFrame {
 	}
 	public JComboBox getComboBox_prod() {
 		return comboBox_prod;
+	}
+	public JComboBox getComboBox_visi() {
+		return comboBox_visi;
+	}
+	public JComboBox getComboBox_med() {
+		return comboBox_med;
 	}
 }

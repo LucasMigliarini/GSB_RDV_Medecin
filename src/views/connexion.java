@@ -21,6 +21,7 @@ public class connexion extends JFrame {
 	private JTextField textField_user;
 	private JTextField textField_mdp;
 	private JButton btnConnexion;
+	private JComboBox comboBox;
 
 	/**
 	 * Launch the application.
@@ -76,8 +77,8 @@ public class connexion extends JFrame {
 		lblType.setBounds(33, 125, 70, 15);
 		contentPane.add(lblType);
 		
-		JComboBox comboBox = new JComboBox();
-		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Medecin"}));
+		comboBox = new JComboBox();
+		comboBox.setModel(new DefaultComboBoxModel(new String[] {"Medecin", "Visiteur"}));
 		comboBox.setBounds(171, 120, 114, 24);
 		contentPane.add(comboBox);
 	}
@@ -90,5 +91,8 @@ public class connexion extends JFrame {
 	}
 	public JButton getBtnConnexion() {
 		return btnConnexion;
+	}
+	public JComboBox getComboBox() {
+		return comboBox;
 	}
 }

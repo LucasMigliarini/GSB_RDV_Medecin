@@ -52,6 +52,7 @@ public class DAOCreneaux extends DAOGeneric<Creneaux>{
 			Creneaux cre = (Creneaux) query2.uniqueResult();
 			return cre;
 		}
+
 	public List<Creneaux> FindReserver(Visiteur visiteur) {
 		
 		int idVisi = visiteur.getVisiteurId();
@@ -59,6 +60,18 @@ public class DAOCreneaux extends DAOGeneric<Creneaux>{
 		String SQL= "SELECT * FROM CRENEAUX WHERE CreReserver=1 and CreVisiteur=:idVisi";
 		SQLQuery query2 = session.createSQLQuery(SQL);
 		query2.setInteger("idVisi",idVisi);
+		query2.addEntity(entityClass);
+		List<Creneaux> cre = query2.list();
+		return cre;
+	}
+	
+public List<Creneaux> FindReserverByMed(Medecin medecin) {
+		
+		int idMed = medecin.getMedecinId();
+		
+		String SQL= "SELECT * FROM CRENEAUX WHERE CreReserver=1 and CreMedecin=:idMed";
+		SQLQuery query2 = session.createSQLQuery(SQL);
+		query2.setInteger("idMed",idMed);
 		query2.addEntity(entityClass);
 		List<Creneaux> cre = query2.list();
 		return cre;

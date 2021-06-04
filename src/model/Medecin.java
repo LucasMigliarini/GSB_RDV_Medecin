@@ -28,6 +28,12 @@ public class Medecin implements Serializable {
 
 	@Column(name="MedecinSpecialite")
 	private String medecinSpecialite;
+	
+	@Column(name="MedecinMDP")
+	private String MedecinMDP;
+	
+	@Column(name="MedecinEmail")
+	private String MedecinEmail;
 
 
 	public Medecin() {
@@ -63,6 +69,22 @@ public class Medecin implements Serializable {
 
 	public void setMedecinSpecialite(String medecinSpecialite) {
 		this.medecinSpecialite = medecinSpecialite;
+	}
+	
+	public String getMedecinMDP() {
+		return this.MedecinMDP;
+	}
+
+	public void setMedecinMDP(String medecinMDP) {
+		this.MedecinMDP = medecinMDP;
+	}
+	
+	public String getMedecinEmail() {
+		return this.MedecinEmail;
+	}
+
+	public void setMedecinEmail(String MedecinEmail) {
+		this.MedecinEmail = MedecinEmail;
 	}
 
 

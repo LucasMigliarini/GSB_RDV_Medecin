@@ -89,7 +89,7 @@ public class ControllerRDV implements ActionListener{
 		Visiteur visi = daoVisi.findByName(fenetre.getComboBox_visi().getSelectedItem().toString());
 		
 		Medecin medNom = daoMed.findByName(info3);
-		System.out.println(medNom.getMedecinAdresse());
+
 		Creneaux cre = daoCre.FindByAll(info1, info2, medNom);
 		cre.setCreReserver(1);
 		cre.setVisiteur(visi);

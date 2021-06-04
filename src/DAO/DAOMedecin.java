@@ -30,6 +30,15 @@ public class DAOMedecin extends DAOGeneric<Medecin>{
 		Medecin med = (Medecin) query.uniqueResult();
 		return med;
 	}
+	
+	public Medecin verifEmail(String mail) {
+		String SQL = "SELECT * FROM MEDECIN WHERE MedecinEMail=:mail";
+		SQLQuery query = session.createSQLQuery(SQL);
+		query.setString("mail",mail);
+		query.addEntity(entityClass);
+		Medecin email = (Medecin) query.uniqueResult();
+		return email;
+	}
 
 	
 	

@@ -21,6 +21,7 @@ import DAO.DAOMedecin;
 import DAO.DAOProduit;
 import DAO.DAOVisiteur;
 import views.NewRDV;
+import views.newCRV;
 import views.ViewRDV;
 import views.allRDV;
 import views.compteRenduVisite;
@@ -90,7 +91,7 @@ public class ControllerCRV implements ActionListener{
 	
 	private void newCRV() throws HibernateException, SQLException {
 		fenetre.setVisible(false);
-		new ControllerNewCRV(new views.newCRV(), new DAOProduit(HibernateUtil.getSessionFactory().openSession()), new DAOCategorie(HibernateUtil.getSessionFactory().openSession())).Init();
+		new ControllerNewCRV(new newCRV(), new DAOProduit(HibernateUtil.getSessionFactory().openSession()), new DAOCategorie(HibernateUtil.getSessionFactory().openSession()),new DAOMedecin(HibernateUtil.getSessionFactory().openSession()),new DAOVisiteur(HibernateUtil.getSessionFactory().openSession()),new DAOCompteRendu(HibernateUtil.getSessionFactory().openSession())).Init();;
 	}
 	
 	private void voirRDv() throws HibernateException, SQLException {

@@ -24,6 +24,8 @@ import DAO.DAOMedecin;
 import DAO.DAOProduit;
 import DAO.DAOVisiteur;
 import views.NewRDV;
+import views.ViewRDV;
+import views.allRDV;
 import views.allRDVMedcin;
 import views.compteRenduVisite;
 import views.newCRV;
@@ -39,56 +41,49 @@ import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 
-public class ControllerNewRDV implements ActionListener{
+public class ControllerRDVMed implements ActionListener{
 	
-	private NewRDV fenetre;
+	private allRDVMedcin fenetre;
 	
 	DAOCreneaux daoCre;
 	DAOMedecin daoMed;
-	List<Medecin> listProd;
+	List<Creneaux> listCre;
+	MyDefaultModelCreneauxMed model;
 	
 	
 	
-	public ControllerNewRDV(NewRDV fenetre, DAOCreneaux daoCre,DAOMedecin daoMed) {
+	public ControllerRDVMed(allRDVMedcin fenetre, DAOCreneaux daoCre, DAOMedecin daoMed) {
 		
 		this.fenetre = fenetre;
 		this.daoCre = daoCre;
 		this.daoMed = daoMed;
-		fenetre.getBtnRetour().addActionListener(this);
-		fenetre.getBtnValider().addActionListener(this);
+		fenetre.getBtnNewRDV().addActionListener(this);
+		fenetre.getBtnVoir().addActionListener(this);
 					
 	}
 
 	public void Init() throws SQLException {
 		List<Medecin> med = daoMed.findAll();
-		for (Medecin medecin: med) {
+		for (Medecin medecin : med) {
 			fenetre.getComboBox_med().addItem(medecin.getMedecinNom());
 		}
-		
 			
 		fenetre.setVisible(true);
 
 	}
 	
-	private void valider() throws HibernateException, SQLException {
-		String medecin = fenetre.getComboBox_med().getSelectedItem().toString();
-		Medecin mede = daoMed.findByName(medecin);
-		
-		String date = fenetre.getTxt_date().getText().toString();
-		String heure = fenetre.getTxt_heure().getText().toString();
-		
-		Creneaux cre = new Creneaux();
-		cre.setCreDate(date);
-		cre.setCreHeure(heure);
-		cre.setMedecin(mede);
-		daoCre.SaveOrUpdate(cre);
-		
-		new ControllerRDVMed(new allRDVMedcin(), new DAOCreneaux(HibernateUtil.getSessionFactory().openSession()), new DAOMedecin(HibernateUtil.getSessionFactory().openSession())).Init();
+	private void voir() {
+
+		Medecin medecin = daoMed.findByName(fenetre.getComboBox_med().getSelectedItem().toString());
+		List<Creneaux> cre = daoCre.FindReserverByMed(medecin);
+		model = new MyDefaultModelCreneauxMed(cre);
+		fenetre.getTable().setModel(model);
 	}
 	
-	private void retour() throws HibernateException, SQLException {
+	
+	private void newRDV() throws HibernateException, SQLException {
 		fenetre.setVisible(false);
-		new ControllerRDVMed(new allRDVMedcin(), new DAOCreneaux(HibernateUtil.getSessionFactory().openSession()), new DAOMedecin(HibernateUtil.getSessionFactory().openSession())).Init();
+		new ControllerNewRDV(new NewRDV(), new DAOCreneaux(HibernateUtil.getSessionFactory().openSession()), new DAOMedecin(HibernateUtil.getSessionFactory().openSession())).Init();
 		
 	}
 	
@@ -97,20 +92,16 @@ public class ControllerNewRDV implements ActionListener{
 		JButton buton = (JButton) e.getSource();
 		String name = buton.getName();
 		switch (name) {
-		case "valider":
+		case "newRDV":
 			try {
-				valider();
+				newRDV();
 			} catch (HibernateException | SQLException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
-		case "retour":
-			try {
-				retour();
-			} catch (HibernateException | SQLException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			break;
+		case "voir":
+			voir();
 			break;
 		default:
 			break;
